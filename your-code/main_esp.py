@@ -65,7 +65,7 @@ print (d)
 #[tu código aquí]
 print(f"This is array a \n {a}")
 print(f"This is array d \n {d}")
-# La diferencia es que los números en d son decimales. Esto es porque b, transpuesto en c, fue creado usando np.ones() y por eso es un array de floating points.
+# La diferencia es que los números en d son +1 y son decimales. Esto es porque b, transpuesto en c, fue creado usando np.ones() y por eso es un array de floating points.
 
 #12. Multiplica a y c. Asigna el resultado a e.
 
@@ -84,12 +84,18 @@ print(e_a_equal)
 #14. Identifica los valores máximos, mínimos y medios en d. Asigna esos valores a las variables "d_max", "d_min" y "d_mean"
 
 #[tu código aquí]
+d_max = np.max(d)
+d_min = np.min(d)
+d_mean = np.mean(d)
 
+print(d_max)
+print(d_min)
+print(d_mean)
 
 #15. Ahora queremos etiquetar los valores en d. Primero crea un array vacío "f" con la misma forma (es decir, 2x3x5) que d usando `np.empty`.
 
 #[tu código aquí]
-
+f = np.empty((2, 3, 5))
 
 """
 #16. Rellena los valores en f. Para cada valor en d, si es mayor que d_min pero menor que d_mean, asigna 25 al valor correspondiente en f.
@@ -102,11 +108,21 @@ Nota: no necesitas usar Numpy en esta pregunta.
 """
 
 #[tu código aquí]
+for x in range(d.shape[0]):
+        for y in range(d.shape[1]):
+                for z in range(d.shape[2]):
+                        if d_min < d[x, y, z] < d_mean:
+                                f[x, y, z] = 25
+                        elif d_mean < d[x, y, z] < d_max:
+                                f[x, y, z] = 75
+                        elif d_mean ==  d[x, y, z]:
+                                f[x, y, z] = 50
+                        elif d_min == d[x, y, z]:
+                                f[x, y, z] = 0
+                        else:
+                                f[x, y, z] = 100
 
 
-
-
-"""
 #17. Imprime d y f. ¿Tienes el f esperado?
 Por ejemplo, si tu d es:
 array([[[1.85836099, 1.67064465, 1.62576044, 1.40243961, 1.88454931],
@@ -129,7 +145,8 @@ array([[[ 75.,  75.,  75.,  25.,  75.],
 
 #[tu código aquí]
 
-
+print(f"This is d \n {d}")                             
+print(f"This is f \n {f}")
 
 """
 #18. Pregunta de bonificación: en lugar de usar números (es decir, 0, 25, 50, 75 y 100), ¿cómo usar valores de cadena 
