@@ -162,3 +162,25 @@ De nuevo, no necesitas Numpy en esta pregunta.
 """
 
 #[tu código aquí]
+#Definir diccionario para mapear números a valores de cadena
+elementos_map = {
+    0: 'A',
+    25: 'B',
+    50: 'C',
+    75: 'D',
+    100: 'E'
+}
+
+for x in range(d.shape[0]):
+        for y in range(d.shape[1]):
+                for z in range(d.shape[2]):
+                        if d_min < d[x, y, z] < d_mean:
+                                f[x, y, z] = elementos_map[25]
+                        elif d_mean < d[x, y, z] < d_max:
+                                f[x, y, z] = elementos_map[75]
+                        elif d_mean ==  d[x, y, z]:
+                                f[x, y, z] = elementos_map[50]
+                        elif d_min == d[x, y, z]:
+                                f[x, y, z] = elementos_map[0]
+                        else:
+                                f[x, y, z] = elementos_map[100]
